@@ -69,19 +69,7 @@ temp_geo
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -201,19 +189,7 @@ temp_data_all.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -366,19 +342,7 @@ temp_data_all.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -575,19 +539,7 @@ temp_data_all.tail()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -701,7 +653,7 @@ plt.ylabel('mean max. temperature (degrees Celsius)');
 ```
 
 
-![png](output_19_0.png)
+![png](images/output_19_0.png)
 
 
 
@@ -717,7 +669,7 @@ plt.ylabel('mean max. temperature (degrees Celsius)');
 ```
 
 
-![png](output_20_0.png)
+![png](images/output_20_0.png)
 
 
 The below line plot similarly, highlights an upward trend in mean minimum temperatures. The trends at Darwin Airport and Mildura Airport seems to be relatively static compared to the others.
@@ -735,7 +687,7 @@ plt.ylabel('mean min. temperature (degrees Celsius)');
 ```
 
 
-![png](output_22_0.png)
+![png](images/output_22_0.png)
 
 
 
@@ -751,7 +703,7 @@ plt.ylabel('mean min. temperature (degrees Celsius)');
 ```
 
 
-![png](output_23_0.png)
+![png](images/output_23_0.png)
 
 
 The pivot table below shows the trend indexed by decade as opposed to years. The mean increase in maximum temperatures between the 1960s and 2010s is the highest in the temperate stations of Perth Airport, followed by Woomera Aerodrome and Mildura Airport.
@@ -771,19 +723,7 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'], index='decade',
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -1051,7 +991,7 @@ plt.savefig("max_temp_boxplot.png");
 ```
 
 
-![png](output_30_0.png)
+![png](images/output_30_0.png)
 
 
 
@@ -1068,7 +1008,7 @@ plt.savefig("min_temp_boxplot.png");
 ```
 
 
-![png](output_31_0.png)
+![png](images/output_31_0.png)
 
 
 The below pivot tables and plots provide some insights into the movement of more extreme temperatures. 
@@ -1088,19 +1028,7 @@ temp_data_all[temp_data_all['max_temp'] >= 40].pivot_table('max_temp', index='de
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1340,7 +1268,7 @@ plt.savefig("40_and_above.png");
 ```
 
 
-![png](output_35_0.png)
+![png](images/output_35_0.png)
 
 
 
@@ -1358,7 +1286,7 @@ plt.ylabel('Count');
 ```
 
 
-![png](output_36_0.png)
+![png](images/output_36_0.png)
 
 
 
@@ -1375,19 +1303,7 @@ temp_data_all[temp_data_all['min_temp'] <= 5].pivot_table('min_temp', index='dec
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1631,7 +1547,7 @@ plt.savefig("5_and_below.png");
 ```
 
 
-![png](output_38_0.png)
+![png](images/output_38_0.png)
 
 
 
@@ -1647,19 +1563,7 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'],
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -2087,19 +1991,7 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'],
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -2540,7 +2432,7 @@ plt.ylabel('Temperature range');
 ```
 
 
-![png](output_43_0.png)
+![png](images/output_43_0.png)
 
 
 ### 3. Further Visualisations
@@ -2572,7 +2464,7 @@ ax = sns.kdeplot(cml.max_temp, cml.min_temp,
 ```
 
 
-![png](output_46_0.png)
+![png](images/output_46_0.png)
 
 
 The below seaborn pairplot shows variables max_temp, min_temp, year & month plotted against station. This plot can be useful for finding relationships that require further analysis.
@@ -2589,7 +2481,7 @@ sns.pairplot(data=(temp_data_all[temp_data_all['year'] > 1939]).dropna(),
 
 
 
-![png](output_48_1.png)
+![png](images/output_48_1.png)
 
 
 According to some articles, the R data science language is be better suited to perform further time series analysis. I intend to find out! Produce a univariate extract to investigate later and perhaps create a prediction model in R...
