@@ -1006,7 +1006,7 @@ plt.savefig("min_temp_boxplot.png");
 ![png](output_31_0.png)
 
 
-The below pivot tables and plots provide some insights into the movement of more extreme tempertures. 
+The below pivot tables and plots provide some insights into the movement of more extreme temperatures. 
 
 
 ```python
