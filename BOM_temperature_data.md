@@ -21,7 +21,7 @@ sns.set(font_scale = 1.25)
 plt.style.use('bmh')
 path = 'C:/Users/Grant/Documents/jupyter notebooks/bom-temperatures/'
 
-# Convert contents of daily maximun temp CSV files from BOM website to pandas dataframes
+# Convert contents of daily maximum temp CSV files from BOM website to pandas dataframes
 df1 = pd.read_csv(path + 'IDCJAC0010_66062_1800_Data.csv')
 df2 = pd.read_csv(path + 'IDCJAC0010_40043_1800_Data.csv')
 df3 = pd.read_csv(path + 'IDCJAC0010_76031_1800_Data.csv')
@@ -69,6 +69,19 @@ temp_geo
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -188,6 +201,19 @@ temp_data_all.head()
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -320,7 +346,7 @@ print (temp_data_all.shape)
     (302845, 16)
     
 
-Enhance the dataframe with an aggregation column called 'decade'. Then perform a clean up of unecesary columns created in the merge process.
+Enhance the dataframe with an aggregation column called 'decade'. Then perform a clean-up of unnecessary columns created in the merge process.
 
 
 ```python
@@ -340,6 +366,19 @@ temp_data_all.head()
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -472,7 +511,7 @@ temp_data_all.head()
 
 
 ```python
-# Perform cleanup by dropping unecessary columns from temp_data_all
+# Perform clean-up by dropping unnecessary columns from temp_data_all
 print (temp_data_all.shape)
 temp_data_all = temp_data_all.drop(['Product code_x', 'Product code_y', 'Days of accumulation of maximum temperature',
                                    'Days of accumulation of minimum temperature', 'Quality_x', 'Quality_y'], axis=1) 
@@ -536,6 +575,19 @@ temp_data_all.tail()
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -634,7 +686,7 @@ temp_data_all.tail()
 
 Use the pivot_table function to convert the data into a wide format, suitable for time series analysis.
 
-The below line plot highlights an upward trend in mean maximum temperatures, particularly from around the mid 1940s until the end of 2017. The second plot shows a zoomed in view from 1946 onwards.
+The below line plot highlights an upward trend in mean maximum temperatures, particularly from around the mid-1940s until the end of 2017. The second plot shows a zoomed in view from 1946 onwards.
 
 
 ```python
@@ -645,11 +697,11 @@ temp_data_all.pivot_table('max_temp',
 
 
 plt.title('Mean Maximum Temperatures (1859-2017)')
-plt.ylabel('mean max. temperature (degrees celsius)');
+plt.ylabel('mean max. temperature (degrees Celsius)');
 ```
 
 
-![png](images/output_19_0.png)
+![png](output_19_0.png)
 
 
 
@@ -661,11 +713,11 @@ temp_data_all[temp_data_all['year'] > 1945].pivot_table('max_temp',
 
 
 plt.title('Mean Maximum Temperatures (1946-2017)')
-plt.ylabel('mean max. temperature (degrees celsius)');
+plt.ylabel('mean max. temperature (degrees Celsius)');
 ```
 
 
-![png](images/output_20_0.png)
+![png](output_20_0.png)
 
 
 The below line plot similarly, highlights an upward trend in mean minimum temperatures. The trends at Darwin Airport and Mildura Airport seems to be relatively static compared to the others.
@@ -679,11 +731,11 @@ temp_data_all.pivot_table('min_temp',
 
 
 plt.title('Mean Minimum Temperatures (1859-2017)')
-plt.ylabel('mean min. temperature (degrees celsius)');
+plt.ylabel('mean min. temperature (degrees Celsius)');
 ```
 
 
-![png](images/output_22_0.png)
+![png](output_22_0.png)
 
 
 
@@ -695,11 +747,11 @@ temp_data_all[temp_data_all['year'] > 1945].pivot_table('min_temp',
 
 
 plt.title('Mean Minimum Temperatures (1946-2017)')
-plt.ylabel('mean min. temperature (degrees celsius)');
+plt.ylabel('mean min. temperature (degrees Celsius)');
 ```
 
 
-![png](images/output_23_0.png)
+![png](output_23_0.png)
 
 
 The pivot table below shows the trend indexed by decade as opposed to years. The mean increase in maximum temperatures between the 1960s and 2010s is the highest in the temperate stations of Perth Airport, followed by Woomera Aerodrome and Mildura Airport.
@@ -719,6 +771,19 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'], index='decade',
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -902,7 +967,7 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'], index='decade',
 
 
 
-Summarise the above table by printing out the mean and median differences in temperature between the 1960s and the 2010s. It is apparent that all stations maximum and minimum temperatures have increased over this time period.
+Summarise the above table by printing out the mean and median differences in temperature between the 1960s and the 2010s. It is apparent that all stations maximum and minimum temperatures have increased over this period.
 The increase in mean maximum temperatures is higher than mean minimum temperatures. It is also noteworthy that the most tropical station (Darwin Airport) shows the smallest movement in both. Although Perth, Woomera and Mildura show the largest increase in mean maximum temperatures, they all show a relatively small increase in mean minimum temperatures. One possible explanation for this is that reduced cloud cover in these locations, is still allowing heat to escape quickly at night.
 
 Note: as mentioned above, the 2010s are not complete so this variance could increase by the end of December 2019.
@@ -921,8 +986,8 @@ for column in pivot_df:
     print (pivot_df.columns[i], pivot_df.iloc[ln,i] - pivot_df.iloc[0,i])
     lst.append(pivot_df.iloc[ln,i] - pivot_df.iloc[0,i])
     i += 1
-print ('Overall mean increase: ', mean(lst), 'degrees celsius.')
-print ('Overall median increase: ', median(lst), 'degrees celsius.')
+print ('Overall mean increase: ', mean(lst), 'degrees Celsius.')
+print ('Overall median increase: ', median(lst), 'degrees Celsius.')
 ```
 
     ('max_temp', 'Adelaide Airport') 0.89622099957
@@ -934,8 +999,8 @@ print ('Overall median increase: ', median(lst), 'degrees celsius.')
     ('max_temp', 'Perth Airport') 1.67490004426
     ('max_temp', 'Sydney (Observatory Hill)') 1.28934111222
     ('max_temp', 'Woomera Aerodrome') 1.35206157602
-    Overall mean increase:  1.16189782784 degrees celsius.
-    Overall median increase:  1.25407471527 degrees celsius.
+    Overall mean increase:  1.16189782784 degrees Celsius.
+    Overall median increase:  1.25407471527 degrees Celsius.
     
 
 
@@ -952,8 +1017,8 @@ for column in pivot_df:
     print (pivot_df.columns[i], pivot_df.iloc[ln,i] - pivot_df.iloc[0,i])
     lst.append(pivot_df.iloc[ln,i] - pivot_df.iloc[0,i])
     i += 1
-print ('Overall mean increase: ', mean(lst), 'degrees celsius.')
-print ('Overall median increase: ', median(lst), 'degrees celsius.')
+print ('Overall mean increase: ', mean(lst), 'degrees Celsius.')
+print ('Overall median increase: ', median(lst), 'degrees Celsius.')
 ```
 
     ('min_temp', 'Adelaide Airport') 1.1215001878
@@ -965,11 +1030,11 @@ print ('Overall median increase: ', median(lst), 'degrees celsius.')
     ('min_temp', 'Perth Airport') 0.518264192422
     ('min_temp', 'Sydney (Observatory Hill)') 1.13662259115
     ('min_temp', 'Woomera Aerodrome') 0.990081755563
-    Overall mean increase:  0.983835978392 degrees celsius.
-    Overall median increase:  1.1215001878 degrees celsius.
+    Overall mean increase:  0.983835978392 degrees Celsius.
+    Overall median increase:  1.1215001878 degrees Celsius.
     
 
-The below boxplots highlight the distribution of maximum and minimum temperatures very clearly across the decades of BOM data. As expected, you can see an increase in size of the interquartile range for the temperate weather stations, while the tropical and sub-tropical range is fairly constant. The increase in each boxplot group is abundantly clear.
+The below boxplots highlight the distribution of maximum and minimum temperatures very clearly across the decades of BOM data. As expected, you can see an increase in size of the interquartile range for the temperate weather stations, while the tropical and sub-tropical range is largely constant. The increase in each boxplot group is abundantly clear.
 
 
 ```python
@@ -986,7 +1051,7 @@ plt.savefig("max_temp_boxplot.png");
 ```
 
 
-![png](images/output_30_0.png)
+![png](output_30_0.png)
 
 
 
@@ -1003,14 +1068,14 @@ plt.savefig("min_temp_boxplot.png");
 ```
 
 
-![png](images/output_31_0.png)
+![png](output_31_0.png)
 
 
 The below pivot tables and plots provide some insights into the movement of more extreme temperatures. 
 
 
 ```python
-# Create pivot table for the number of 40 degrees celsius days or above, per decade
+# Create pivot table for the number of 40 degrees Celsius days or above, per decade
 # Note 2010s not complete! Only those stations that register >= 40 will appear.
 
 temp_data_all[temp_data_all['max_temp'] >= 40].pivot_table('max_temp', index='decade', columns='station',
@@ -1023,6 +1088,19 @@ temp_data_all[temp_data_all['max_temp'] >= 40].pivot_table('max_temp', index='de
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1242,13 +1320,13 @@ temp_data_all[temp_data_all['max_temp'] >= 40].pivot_table('max_temp', index='de
 
 
 
-In the below plot the number of high maximum temperatures appear to be increasing at a faster rate for temperate inland stations (taking into account the low base formed by incomplete data in the initial decade for the datasets). It is important to keep in mind that the 2010s are incomplete and two more summers are yet to come (2018 & 2019).
+In the below plot the number of high maximum temperatures appear to be increasing at a faster rate for temperate inland stations (considering the low base formed by incomplete data in the initial decade for the datasets). It is important to keep in mind that the 2010s are incomplete and two more summers are yet to come (2018 & 2019).
 
 
 
 
 ```python
-# Create pivot table for the number of mean maximum 40 degrees celsius days or above, per decade
+# Create pivot table for the number of mean maximum 40 degrees Celsius days or above, per decade
 # Note 2010s not complete! Only those stations that register >= 40 will appear. Datasets that start mid-way through the decade 
 # will start from a low base.
 
@@ -1256,13 +1334,13 @@ temp_data_all[temp_data_all['max_temp'] >= 40].pivot_table('max_temp', index='de
                                                                                 aggfunc='count',
                                                                                 fill_value=nan).plot(figsize=(12, 6))
 
-plt.title('Number of 40 degrees celsius days or above per decade')
+plt.title('Number of 40 degrees Celsius days or above per decade')
 plt.ylabel('Count')
 plt.savefig("40_and_above.png");
 ```
 
 
-![png](images/output_35_0.png)
+![png](output_35_0.png)
 
 
 
@@ -1275,17 +1353,17 @@ temp_data_all[(temp_data_all['max_temp'] >= 40) & (temp_data_all['year'] >= 1950
                                                                                 aggfunc='count',
                                                                                 fill_value=nan).plot(figsize=(12, 6))
 
-plt.title('Number of 40 degrees celsius days or above per decade (1950 - 2009)')
+plt.title('Number of 40 degrees Celsius days or above per decade (1950 - 2009)')
 plt.ylabel('Count');
 ```
 
 
-![png](images/output_36_0.png)
+![png](output_36_0.png)
 
 
 
 ```python
-# Create pivot table for the number of 5 degrees celsius days or below, per decade
+# Create pivot table for the number of 5 degrees Celsius days or below, per decade
 # Note 2010s not complete! Only those stations that register <= 5 will appear.
 # Datasets that start mid-way through the decade will start from a low base.
 
@@ -1297,6 +1375,19 @@ temp_data_all[temp_data_all['min_temp'] <= 5].pivot_table('min_temp', index='dec
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1529,18 +1620,18 @@ temp_data_all[temp_data_all['min_temp'] <= 5].pivot_table('min_temp', index='dec
 
 
 ```python
-# Create pivot table for the number of mean minimum 5 degrees celsius days or below, per decade
+# Create pivot table for the number of mean minimum 5 degrees Celsius days or below, per decade
 # Note 2010s not complete! Datasets that start mid-way through the decade will start from a low base.
 temp_data_all[temp_data_all['min_temp'] <= 5].pivot_table('min_temp', index='decade', columns='station',
                                                            aggfunc='count', fill_value=nan).plot(figsize=(12, 6))
 
-plt.title('Number of 5 degrees celsius days or below per decade')
+plt.title('Number of 5 degrees Celsius days or below per decade')
 plt.ylabel('Count')
 plt.savefig("5_and_below.png");
 ```
 
 
-![png](images/output_38_0.png)
+![png](output_38_0.png)
 
 
 
@@ -1556,6 +1647,19 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'],
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -1983,6 +2087,19 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'],
 
 
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -2414,7 +2531,7 @@ print (temp_data_all.shape)
 
 ```python
 # Plot the trend in temperature ranges across time for weather stations.
-# Exlude 2017 because it is incomplete  
+# Exclude 2017 because it is incomplete  
 temp_data_all.pivot_table('range', index='year', columns='station',
                           aggfunc='mean', fill_value=nan).plot(figsize=(14, 10))
 plt.xlim(1900, 2017)
@@ -2423,25 +2540,12 @@ plt.ylabel('Temperature range');
 ```
 
 
-![png](images/output_43_0.png)
+![png](output_43_0.png)
 
 
 ### 3. Further Visualisations
 
-
-```python
-# Plot density plots
-
-temp_data_all.pivot_table(['max_temp'], index='year', columns='station',
-                          aggfunc='mean', fill_value=nan).plot(kind='density', figsize=(12, 8));
-#max_data_all = temp_data_all.pivot("month", "year", "max_temp")
-```
-
-
-![png](images/output_45_0.png)
-
-
-In the below kernel density estimation plots, we can see the broader distribution of temperatures at Adelaide Airport, compared to Darwin Airport and Cape Morten Lighthouse.
+In the below kernel density estimation plots, we can see the broader distribution of temperatures in the temperate zone at Mildura Airport (blues), compared to Cape Morten Lighthouse (greens) and Darwin Airport (oranges). 
 
 
 ```python
@@ -2451,13 +2555,13 @@ In the below kernel density estimation plots, we can see the broader distributio
 # Gather data from 1980 only
 
 yr = 1980
-adl = temp_data_all[(temp_data_all['station'] == 'Adelaide Airport') & (temp_data_all['year'] > yr)].dropna()
+mld = temp_data_all[(temp_data_all['station'] == 'Mildura Airport') & (temp_data_all['year'] > yr)].dropna()
 dwn = temp_data_all[(temp_data_all['station'] == 'Darwin Airport') & (temp_data_all['year'] > yr)].dropna()
 cml = temp_data_all[(temp_data_all['station'] == 'Cape Moreton Lighthouse') & (temp_data_all['year'] > yr)].dropna()
 
 
 
-ax = sns.kdeplot(adl.max_temp, adl.min_temp,
+ax = sns.kdeplot(mld.max_temp, mld.min_temp,
                   cmap="Blues", shade=True, shade_lowest=False)
 ax = sns.kdeplot(dwn.max_temp, dwn.min_temp,
                   cmap="Oranges", shade=True, shade_lowest=False)
@@ -2468,7 +2572,7 @@ ax = sns.kdeplot(cml.max_temp, cml.min_temp,
 ```
 
 
-![png](images/output_47_0.png)
+![png](output_46_0.png)
 
 
 The below seaborn pairplot shows variables max_temp, min_temp, year & month plotted against station. This plot can be useful for finding relationships that require further analysis.
@@ -2481,14 +2585,14 @@ sns.pairplot(data=(temp_data_all[temp_data_all['year'] > 1939]).dropna(),
 ```
 
 
-    <matplotlib.figure.Figure at 0x20c62580cc0>
+    <matplotlib.figure.Figure at 0x204e5cfcd30>
 
 
 
-![png](images/output_49_1.png)
+![png](output_48_1.png)
 
 
-According to some articles, the R data science language appears to better suited to perform futher time series analysis. Produce a univariate extract to investigate later and perhaps create a prediction model in R...
+According to some articles, the R data science language is be better suited to perform further time series analysis. I intend to find out! Produce a univariate extract to investigate later and perhaps create a prediction model in R...
 
 
 ```python
