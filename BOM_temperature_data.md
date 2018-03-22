@@ -649,7 +649,7 @@ plt.ylabel('mean max. temperature (degrees celsius)');
 ```
 
 
-![png](output_19_0.png)
+![png](images/output_19_0.png)
 
 
 
