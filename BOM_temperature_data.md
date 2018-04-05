@@ -8,10 +8,9 @@ Data source: http://www.bom.gov.au/climate/data/index.shtml
 
 
 ```python
-# Perform imports, set styles and path
+# Perform imports, set styles
 import pandas as pd
 import matplotlib.pyplot as plt
-import pandas as pd
 import seaborn as sns; sns.set()
 import numpy as np
 import matplotlib as mpl
@@ -19,33 +18,32 @@ import matplotlib as mpl
 %config InlineBackend.figure_format = 'retina'
 sns.set(font_scale = 1.25)
 plt.style.use('bmh')
-path = 'C:/Users/Grant/Documents/jupyter notebooks/bom-temperatures/'
 
 # Convert contents of daily maximum temp CSV files from BOM website to pandas dataframes
-df1 = pd.read_csv(path + 'IDCJAC0010_66062_1800_Data.csv')
-df2 = pd.read_csv(path + 'IDCJAC0010_40043_1800_Data.csv')
-df3 = pd.read_csv(path + 'IDCJAC0010_76031_1800_Data.csv')
-df4 = pd.read_csv(path + 'IDCJAC0010_23034_1800_Data.csv')
-df5 = pd.read_csv(path + 'IDCJAC0010_14015_1800_Data.csv')
-df6 = pd.read_csv(path + 'IDCJAC0010_9021_1800_Data.csv')
-df7 = pd.read_csv(path + 'IDCJAC0010_036031_1800_Data.csv')
-df8 = pd.read_csv(path + 'IDCJAC0010_016001_1800_Data.csv')
-df9 = pd.read_csv(path + 'IDCJAC0010_90015_1800_Data.csv')
+df1 = pd.read_csv('IDCJAC0010_66062_1800_Data.csv')
+df2 = pd.read_csv('IDCJAC0010_40043_1800_Data.csv')
+df3 = pd.read_csv('IDCJAC0010_76031_1800_Data.csv')
+df4 = pd.read_csv('IDCJAC0010_23034_1800_Data.csv')
+df5 = pd.read_csv('IDCJAC0010_14015_1800_Data.csv')
+df6 = pd.read_csv('IDCJAC0010_9021_1800_Data.csv')
+df7 = pd.read_csv('IDCJAC0010_036031_1800_Data.csv')
+df8 = pd.read_csv('IDCJAC0010_016001_1800_Data.csv')
+df9 = pd.read_csv('IDCJAC0010_90015_1800_Data.csv')
 
 # Concatenate daily max temp weather station data
 frames = [df1, df2, df3, df4, df5, df6, df7, df8, df9]
 temp_data_max = pd.concat(frames)
 
 # Convert contents of daily minimum temp CSV files from BOM website to pandas dataframes
-df21 = pd.read_csv(path + 'IDCJAC0011_66062_1800_Data.csv')
-df22 = pd.read_csv(path + 'IDCJAC0011_40043_1800_Data.csv')
-df23 = pd.read_csv(path + 'IDCJAC0011_76031_1800_Data.csv')
-df24 = pd.read_csv(path + 'IDCJAC0011_23034_1800_Data.csv')
-df25 = pd.read_csv(path + 'IDCJAC0011_14015_1800_Data.csv')
-df26 = pd.read_csv(path + 'IDCJAC0011_9021_1800_Data.csv')
-df27 = pd.read_csv(path + 'IDCJAC0011_036031_1800_Data.csv')
-df28 = pd.read_csv(path + 'IDCJAC0011_016001_1800_Data.csv')
-df29 = pd.read_csv(path + 'IDCJAC0011_90015_1800_Data.csv')
+df21 = pd.read_csv('IDCJAC0011_66062_1800_Data.csv')
+df22 = pd.read_csv('IDCJAC0011_40043_1800_Data.csv')
+df23 = pd.read_csv('IDCJAC0011_76031_1800_Data.csv')
+df24 = pd.read_csv('IDCJAC0011_23034_1800_Data.csv')
+df25 = pd.read_csv('IDCJAC0011_14015_1800_Data.csv')
+df26 = pd.read_csv('IDCJAC0011_9021_1800_Data.csv')
+df27 = pd.read_csv('IDCJAC0011_036031_1800_Data.csv')
+df28 = pd.read_csv('IDCJAC0011_016001_1800_Data.csv')
+df29 = pd.read_csv('IDCJAC0011_90015_1800_Data.csv')
 
 # Concatenate daily min temp weather station data
 frames_min = [df21, df22, df23, df24, df25, df26, df27, df28, df29]
@@ -60,7 +58,7 @@ Read in further data as the station name is more useful than station number. Geo
 
 ```python
 # Read in temp_geo subset, which contains meaningful weather station names and location data if required
-temp_geo = pd.read_csv(path + 'temp_geo.csv')
+temp_geo = pd.read_csv('temp_geo.csv')
 temp_geo
 
 ```
@@ -69,7 +67,6 @@ temp_geo
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -189,7 +186,6 @@ temp_data_all.head()
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -342,7 +338,6 @@ temp_data_all.head()
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -539,7 +534,6 @@ temp_data_all.tail()
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -723,7 +717,6 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'], index='decade',
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -1028,7 +1021,6 @@ temp_data_all[temp_data_all['max_temp'] >= 40].pivot_table('max_temp', index='de
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1303,7 +1295,6 @@ temp_data_all[temp_data_all['min_temp'] <= 5].pivot_table('min_temp', index='dec
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1563,7 +1554,6 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'],
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -1991,7 +1981,6 @@ temp_data_all.pivot_table(['max_temp', 'min_temp'],
 
 
 <div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -2477,7 +2466,7 @@ sns.pairplot(data=(temp_data_all[temp_data_all['year'] > 1939]).dropna(),
 ```
 
 
-    <matplotlib.figure.Figure at 0x204e5cfcd30>
+    <matplotlib.figure.Figure at 0x1f4d6f355f8>
 
 
 
